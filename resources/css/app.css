@@ -1,0 +1,27 @@
+body {
+    background-color: #e9decdec;
+}
+.organizate-header {
+    display: flex;
+    justify-content:flex-end;
+    background-color: #723a20;
+    padding: 0 15px;
+}
+
+.organizate-header a {
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.guest-form-container {
+    display: flex;
+    justify-content: center;
+}
+.guest-form-container form {
+    color: #e9decdec;
+    background-color: #723a20;
+    border-radius: 2%;
+    padding: 5%;
+    margin-top: 5em;
+    width: 30vw;
+}
