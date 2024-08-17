@@ -55,10 +55,13 @@ class ProductController extends Controller
     }
 
     public function createProduct(): View {
+        $this->authorize('create', Product::class);
         return view('product.create_or_edit');
     }
 
     public function storeProduct(Request $request): RedirectResponse {
+        $this->authorize('create', Product::class);
+
         //valido los datos
         $validated = $request->validate($this->validationRules, $this->errorMessages);
 
@@ -79,10 +82,12 @@ class ProductController extends Controller
     }
 
     public function editProduct(Product $product): View {
+        $this->authorize('update', $product);
         return view('product.create_or_edit')->with('product', $product);
     }
 
     public function updateProduct(Request $request, Product $product) : RedirectResponse {
+        $this->authorize('update', $product);
         //valido los datos
         $validated = $request->validate($this->validationRules, $this->errorMessages);
 
@@ -94,6 +99,7 @@ class ProductController extends Controller
     }
 
     public function deleteProduct(Product $product): RedirectResponse {
+        $this->authorize('delete', $product);
         $product->delete();
 
         session()->flash('message', 'Producto eliminado exitosamente!');
