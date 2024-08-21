@@ -17,6 +17,7 @@ body {
     display: flex;
     justify-content: center;
 }
+
 .guest-form-container form {
     color: #e9decdec;
     background-color: #723a20;
@@ -24,4 +25,9 @@ body {
     padding: 5%;
     margin-top: 5em;
     width: 30vw;
+}
+
+.footer-app {
+    background-color: #723a20;
+    color: #fff;
 }

@@ -5,11 +5,6 @@
             <x-application-logo />
         </a>
 
-        <!-- Button for responsive toggle -->
-        <button class="navbar-toggler" type="button" @click="open = ! open" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
         <!-- Navigation Links -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -37,14 +32,14 @@
                 </li>
                 <li>
                     <a href={{ route('profile.edit') }}>
-                        {{ __('Profile') }}
+                        Perfil
                     </a>
                 </li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                        <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                            Cerrar sesion
                         </a>
                     </form>
                 </li>
