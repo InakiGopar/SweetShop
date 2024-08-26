@@ -18,7 +18,7 @@ class RedirectHome
     {
         //redirect to the dashboard if the user is not authenticated
         if(Auth::check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('home');
         }
         return $next($request);
     }

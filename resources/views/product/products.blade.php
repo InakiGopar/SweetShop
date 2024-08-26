@@ -2,11 +2,7 @@
     <h1>Nuestros Productos</h1>
     <div class="products-container">
         <!--Mensaje al usario que le informa si se completo la accion que solicito-->
-        @if (session()->has('message'))
-            <div class="message-container">
-                <span> {{session('message')}}</span>
-            </div>
-        @endif
+        <livewire:message />
 
         <div class="products-buttons-container">
 

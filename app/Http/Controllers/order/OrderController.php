@@ -31,8 +31,6 @@ class OrderController extends Controller
 
 
 
-
-
     public function showOrders(Request $request): View {
         $orders = [];
         //me traigo solo los pedidos del usuario
@@ -90,7 +88,6 @@ class OrderController extends Controller
 
     public function updateOrder(Request $request, Order $order): RedirectResponse {
         $this->authorize('update', $order);
-
         $validated = $request->validate($this->validationRulesUpdate);
 
         // Actualizar la cantidad total del pedido  
@@ -107,8 +104,8 @@ class OrderController extends Controller
                 $productsWithQuantities[$product_id] = ['quantity' => $quantity];
             }
         }
-        $order->products()->sync($productsWithQuantities);
 
+        $order->products()->sync($productsWithQuantities);
         session()->flash('message', 'Pedido actualizado!');
 
         return redirect()->route('order.orders');
@@ -118,7 +115,6 @@ class OrderController extends Controller
         $this->authorize('delete', $order);
 
         $order->delete();
-
         session()->flash('message', 'Pedido eliminado!');
 
         return redirect()->route('order.orders');
