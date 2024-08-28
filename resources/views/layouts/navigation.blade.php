@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="navbar navbar-expand-lg border-bottom">
+<nav class="navbar navbar-expand-lg ">
     <div class="container">
         <!-- Primary Navigation Menu -->
         <a class="navbar-brand" href="{{ route('home') }}">
@@ -34,9 +34,8 @@
                     </x-nav-link>
                 </li>
             </ul>
-
-            <!-- Settings Dropdown -->
-            <ul class="navbar-nav ms-auto">
+                <!-- session -->
+            <ul class="navbar-nav session-nav">
                 <li>
                     <a href={{ route('profile.edit') }} class="nav-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="40" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -45,7 +44,7 @@
                         Perfil
                     </a>
                 </li>
-                <li>
+                <li class="log-out">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();"  class="nav-link">

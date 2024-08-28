@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -16,27 +16,29 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <header class="organizate-header">
-            @if (Route::has('login'))
-                <div>
-                    @auth
-                        <a href="{{ url('/dashboard') }}">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}">Log in</a>
 
+        <section class="welcome-body">
+            <div class="welcome-body-content">
+                <p>
+                    Bienvenido a la pagina web de ysiprobamos!!
+                </p>
+            
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <button class="btn btn-primary">
+                            <a href="{{ route('login') }}">Acceder</a>
+                        </button>
+                        
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <button class="btn btn-primary">
+                                <a href="{{ route('register') }}">Registrarte</a>
+                            </button>
                         @endif
                     @endauth
-                </div>
-            @endif
-        </header>
-
-        <div>
-            <p>
-                bienvenidos a la pagina de YsiProbamos! Registrate para empezar la experiencia si ya tienes
-                una cuenta accede.
-            </p>
-        </div>
+                @endif
+            </div>
+        </section>
     </body>
 </html>
