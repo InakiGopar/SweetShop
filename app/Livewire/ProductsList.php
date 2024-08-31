@@ -16,7 +16,6 @@ class ProductsList extends Component
 
     public function render()
     {
-        // Obtén los productos filtrados usando el método del controlador
         $products = app()->call([new ProductController(), 'getProducts'],
             ['request' => request()->merge(['filtro' => $this->filter])]);
         
