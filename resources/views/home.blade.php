@@ -7,6 +7,7 @@
                     Bienvenido a nuestra pagina, aqui encontraras todos nuestros productos y podras hacer
                     tus pedidos!!
                 </p>
+                <livewire:carousel />
             </div>
         </div>
     </div>
