@@ -1,8 +1,5 @@
 body {
-    background-color: #e9decdec;
-    background-image: url("/public/img/background-img.png");
-    background-size: cover;
-    background-position: center center;
+    background-color: #E4CCB0;
 }
 
 button {
@@ -65,26 +62,61 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 90vh;
+    justify-content: center;
+}
+
+.presentation {
+    margin-top: 30px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.presentation a {
+    color: #723a20;
+    font-weight: 700;
+}
+
+.presentation h2 {
+    font-size: 3em;
+    font-weight: 500;
+}
+
+.presentation p {
+    font-size: 1.5em;
 }
 
 .home-carousel {
     display: flex;
     align-items: center;
-    margin-top: 3em;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 3em;
 }
 
 .home-carousel img {
-    height: 400px;
-    width: 600px;
+    height: 500px;
+    width: 750px;
 }
 
+.carousel-arrow {
+    background-image: url('/public/img/icons/ic_arrow_circle_left.png');
+    background-size: cover;
+    background-position: center center;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
 
+.carousel-arrow:hover {
+    scale: 1.1;
+    transition: 0.2s all ease;
+}
 
-/*FOOTER*/
+.left {
+    margin-right: 1em;
+}
 
-.footer-app {
-    background-color: #723a20;
-    color: #fff;
-    height: 25vh;
+.right {
+    transform: scale(-1);
+    margin-left: 1em;
 }
