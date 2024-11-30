@@ -16,18 +16,27 @@
         </div>
     </div>
 
-    <div class="links">
-        <ul class="brand-links">
-            <li><a href="">Home</a></li>
-            <li><a href="">Nuestros Productos</a></li>
-            <li><a href="">Sobre Nosotros</a></li>
-        </ul>
+    <div class="footer-medium">
 
-        <ul class="user-links">
-            <li><a href="">Mi Perfil</a></li>
-            <li><a href="">Mis Pedidos</a></li>
-            <li><a href="">Cerrar Sesion</a></li>
-        </ul>
+            <ul class="links">
+                <li><a href="{{route('home')}}">Home</a></li>
+                <li><a href="{{route('product.products')}}">Nuestros Productos</a></li>
+                <li><a href="">Sobre Nosotros</a></li>
+                <li><a href="{{ route('profile.edit') }} ">Mi Perfil</a></li>
+                <li><a href="{{route('order.orders')}}">Mis Pedidos</a></li>
+            </ul>
+        
+    </div>
+
+    <div class="footer-order">
+        <p>
+            Elaboramos productos con materia prima de calidad, pensando cuidadosamente
+            la combinación de sabores para brindarte la mejor experiencia gastronomica posible.
+            No te quedes con las ganas de darte ese lujo que mereces.
+        </p>
+        <button class="btn btn-primary">
+            <a href="{{route('order.create')}}">Hace Tu Pedido Ya!</a>
+        </button>
     </div>
 
 </footer>
