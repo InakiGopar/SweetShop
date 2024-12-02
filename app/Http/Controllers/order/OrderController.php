@@ -63,12 +63,10 @@ class OrderController extends Controller
             'quantity' => array_sum($request->products)
         ]);
         
-        /**
-         *  Agregar a la tabla pivote.
-         *  Cada iteración del array proporciona:
-         *  - $product_id: id del producto.
-         *  - $quantity: cantidad selecionada para ese producto.
-         */
+        // Agregar a la tabla pivote.
+        // Cada iteración del array proporciona:
+        // - $product_id: id del producto.
+        // - $quantity: cantidad selecionada para ese producto.
 
         foreach ($request->products as $product_id => $quantity) {
             if ($quantity > 0) {
