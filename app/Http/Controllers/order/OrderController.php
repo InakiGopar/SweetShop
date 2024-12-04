@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Services\OrderService;
 
 class OrderController extends Controller
 {
@@ -21,27 +22,19 @@ class OrderController extends Controller
         'quantity.required' => 'debe indicar que cantidad de pedidos va a realizar',
     ];
 
-    protected $productController;
+    protected OrderService $orderService;
+    protected ProductController $productController;
 
-    public function __construct(ProductController $productController)
+    public function __construct(OrderService $orderService, ProductController $productController)
     {
+        $this->orderService = $orderService;
         $this->productController = $productController;
     }
 
 
-
-
     public function showOrders(Request $request): View {
-        $orders = [];
-        //me traigo solo los pedidos del usuario
-        if(!empty($request->filtro) && $request->filtro === 'mis-pedidos') {
-            $orders = Order::myOrders($request->filtro)->get();
-        }
-        else {
-            //me traigo todos los pedidos de la base de datos
-            $orders = Order::get();
-        }
-        return view('order.orders')->with('orders', $orders);
+        $orders = $this->orderService->getOrders($request->filtro);
+        return view('order.orders')->with('orders' , $orders);
     }
 
     public function showOrder(Order $order): View {
@@ -57,23 +50,10 @@ class OrderController extends Controller
         //valido los datos
         $validated = $request->validate($this->validationRulesCreate, $this->errorMessages);
 
-        //crear un nuevo registro en la tabla Order
-        $order = Order::create([
-            'user_id' => auth()->user()->id,
-            'quantity' => array_sum($request->products)
-        ]);
+        $this->orderService->storeOrder($request->all(), auth()->id());
         
-        // Agregar a la tabla pivote.
-        // Cada iteración del array proporciona:
-        // - $product_id: id del producto.
-        // - $quantity: cantidad selecionada para ese producto.
-
-        foreach ($request->products as $product_id => $quantity) {
-            if ($quantity > 0) {
-                $order->products()->attach($product_id, ['quantity' => $quantity]);
-            }
-        }   
         session()->flash('message', 'Pedido realizado!');
+        
         return redirect()->route('order.orders');
     }
 
@@ -86,24 +66,11 @@ class OrderController extends Controller
 
     public function updateOrder(Request $request, Order $order): RedirectResponse {
         $this->authorize('update', $order);
+
         $validated = $request->validate($this->validationRulesUpdate);
 
-        // Actualizar la cantidad total del pedido  
-        $totalQuantity = array_sum($request->products);
-        $order->update([
-            'quantity' => $totalQuantity,
-            'status' => $validated['status']      
-        ]);
+        $this->orderService->updateOrder($order, array_merge($validated, ['products'=> $request->products]));
 
-        // Sincronizar con la tabla pivote
-        $productsWithQuantities = [];
-        foreach ($request->products as $product_id => $quantity) {
-            if ($quantity > 0) {
-                $productsWithQuantities[$product_id] = ['quantity' => $quantity];
-            }
-        }
-
-        $order->products()->sync($productsWithQuantities);
         session()->flash('message', 'Pedido actualizado!');
 
         return redirect()->route('order.orders');
@@ -112,7 +79,8 @@ class OrderController extends Controller
     public function deleteOrder(Order $order): RedirectResponse {
         $this->authorize('delete', $order);
 
-        $order->delete();
+        $this->orderService->deleteOrder($order);
+
         session()->flash('message', 'Pedido eliminado!');
 
         return redirect()->route('order.orders');

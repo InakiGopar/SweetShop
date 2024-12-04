@@ -34,11 +34,12 @@ class ProductController extends Controller
      * @return Collection<Product>
      */
     public function getProducts(Request $request = null): Collection  { 
+
         if(!empty($request->filtro) && $request->filtro === 'productos-dulces') {
-            $products = Product::sweetProducts($request->filtro)->get();
+            $products = Product::sweetProducts($request->filtro)->get();  //me traigo los productos dulces 
         }
         elseif(!empty($request->filtro) && $request->filtro === 'productos-salados') {
-            $products = Product::saltyProducts($request->filtro)->get();
+            $products = Product::saltyProducts($request->filtro)->get(); //me traigo los productos salados 
         }
         else {
             $products = Product::get(); //me traigo todos los productos de la base de datos

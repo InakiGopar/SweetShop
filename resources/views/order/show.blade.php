@@ -19,7 +19,10 @@
             <p>Total de productos pedidos: {{ $order->products->sum('pivot.quantity') }}</p>    
             <ul >
                 @foreach($order->products as $product)
-                    <li> {{ $product->pivot->quantity }}  {{ $product->name }}</li>
+                    <li> 
+                        {{ $product->pivot->quantity }}
+                        {{ $product->name }}
+                    </li>
                 @endforeach
             </ul>
         </div>
