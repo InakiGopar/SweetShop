@@ -7,18 +7,33 @@
             <a href="{{route('order.create')}}">Quiero Hacer Un Pedido</a>
         </button>
     
-        <button class="btn btn-secondary" wire:click="$set('filter', '')">Ver Todos Los Pedidos</button>
+        <button 
+            class="btn btn-secondary"
+            wire:click="$set('filter', '')"
+            style="display: {{$filter == '' ? 'none' : 'flex'}}"
+        >
+            Ver Todos Los Pedidos
+        </button>
 
-        <button class="btn btn-secondary" wire:click="$set('filter', 'mis-pedidos')">Mis Pedidos</button>
+        <button 
+            class="btn btn-secondary"
+            wire:click="$set('filter', 'mis-pedidos')"
+            style="display: {{$filter === 'mis-pedidos' ? 'none' : 'flex'}}"
+        >
+            Ver Mis Pedidos
+        </button>
     
     </div>
 
     <ul>
         @forelse ($orders as $order)
             <li>
-                <div class="order">
+                <div class="order" style="opacity: {{$order->status === 'entregado' ? '0.8' : '1'}}">
     
-                    <div class="pending">                        
+                    <div 
+                        class="label"
+                        style="background-color: {{$order->status === 'entregado' ? 'green' : '#cf2e2f;'}}"
+                    >                        
                         <span>{{$order->status}}</span>
                     </div>
                     

@@ -1,3 +1,11 @@
+.btn-order-container {
+    display: flex;
+}
+
+.btn-order-container button:first-child {
+    margin-right: 1em;
+}
+
 .section-orders {
     display: flex;
     flex-direction: column;
@@ -54,7 +62,7 @@
     font-weight: 600;
 }
 
-.pending {
+.label {
     position: relative;
     display: flex;
     align-items: center;
@@ -63,11 +71,10 @@
     width: 100px;
     height: 30px;
     transform: rotate(50deg);
-    background-color: #cf2e2f;
     color: #fff;
 }
 
-.pending span {
+.label span {
     font-size: 18px;
 }
 

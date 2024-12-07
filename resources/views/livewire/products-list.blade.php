@@ -5,7 +5,7 @@
         <button class="button-secondary" wire:click="$set('filter', 'productos-salados')">Productos salados</button>
     </div>
 
-    <div class="products-list row">
+    <div class="products-list">
         @forelse ($products as $product)
             <div class="card col-4 sm-3" style="width: 18rem;">
                 <img src="img/logo.jpeg" class="card-img-top" alt="...">

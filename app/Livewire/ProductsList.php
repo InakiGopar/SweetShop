@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Http\Controllers\product\ProductController;
+use App\Services\ProductService;
 use Livewire\Component;
 
 class ProductsList extends Component
@@ -16,8 +16,7 @@ class ProductsList extends Component
 
     public function render()
     {
-        $products = app()->call([new ProductController(), 'getProducts'],
-            ['request' => request()->merge(['filtro' => $this->filter])]);
+        $products = (new ProductService())->getProducts($this->filter);
         
         return view('livewire.products-list', ['products' => $products]);
     }

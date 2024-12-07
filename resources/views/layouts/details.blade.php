@@ -16,7 +16,8 @@
 
         <!-- Import css and Js -->
         @vite([
-            'resources/css/details.css',
+            'resources/css/orderDetails.css',
+            'resources/css/productDetails.css'
         ])
     </head>
     <body>

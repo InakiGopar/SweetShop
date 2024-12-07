@@ -6,7 +6,7 @@ use App\Models\Order;
 class OrderService 
 {
     
-    public function getOrders( string $filter = null) {
+    public function getOrders(string $filter = null) {
 
         //me traigo solo los pedidos del usuario
         if($filter === 'mis-pedidos') {
