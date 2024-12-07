@@ -1,8 +1,30 @@
 <div class="products-list-container">
     <div class="button-fillters-container">
-        <button class="button-secondary"  wire:click="$set('filter', '')">Todos los productos</button>
-        <button class="button-secondary" wire:click="$set('filter', 'productos-dulces')">Productos dulces</button>
-        <button class="button-secondary" wire:click="$set('filter', 'productos-salados')">Productos salados</button>
+
+        <button 
+            class="button-secondary"  
+            wire:click="$set('filter', '')"
+            style= "background-color: {{$filter == '' ? '#5D2B14' : '#8C543A'}}"
+        >
+            Todos los productos
+        </button>
+
+        <button 
+            class="button-secondary" 
+            wire:click="$set('filter', 'productos-dulces')"
+            style="background-color: {{$filter === 'productos-dulces' ? '#5D2B14' : '#8C543A'}}"
+        >
+            Productos dulces
+        </button>
+
+        <button 
+            class="button-secondary" 
+            wire:click="$set('filter', 'productos-salados')"
+            style="background-color: {{$filter === 'productos-salados' ? '#5D2B14' : '#8C543A'}}"
+        >
+            Productos salados
+        </button>
+        
     </div>
 
     <div class="products-list">

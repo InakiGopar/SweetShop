@@ -39,12 +39,12 @@
     color: #e9decdec;
     font-weight: bolder;
     background-color: #8C543A;
-    border: 2px solid #8C543A;
+    border-style: none;
+
 }
 
 .button-secondary:hover {
     background-color: rgb(93, 43, 20);
-    border:  2px solid rgb(93, 43, 20);
 }
 
 .buttons-admin-container {
