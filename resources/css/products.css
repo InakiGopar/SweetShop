@@ -34,19 +34,6 @@
     color: #e9decdec;
 }
 
-.button-secondary {
-    border-radius: 20px;
-    color: #e9decdec;
-    font-weight: bolder;
-    background-color: #8C543A;
-    border-style: none;
-
-}
-
-.button-secondary:hover {
-    background-color: rgb(93, 43, 20);
-}
-
 .buttons-admin-container {
     margin-top: 1em
 }

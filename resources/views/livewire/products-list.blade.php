@@ -35,12 +35,12 @@
                     <h5 class="card-title"> {{ $product->name }}</h5>
                     <p class="card-text"> ${{ $product->price }}</p>
 
-                    <button class="btn btn-primary">
+                    <button class="app-button">
                         <a href="{{ route('product.show', [$product]) }}">Ver detalle</a>
                     </button>
                     <div class="buttons-admin-container">
                         @can('update', $product)
-                            <button class="btn btn-primary">
+                            <button class="app-button">
                                 <a href="{{ route('product.edit', [ $product ]) }}">Editar</a>
                             </button>
                         @endcan
@@ -49,7 +49,7 @@
                             <form action="{{ route('product.delete', [ $product ]) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                                <button class="app-button-danger" type="submit">Eliminar</button>
                             </form>
                         @endcan
                     </div>

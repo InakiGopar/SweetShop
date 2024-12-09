@@ -34,7 +34,7 @@
             la combinación de sabores para brindarte la mejor experiencia gastronomica posible.
             No te quedes con las ganas de darte ese lujo que mereces.
         </p>
-        <button class="btn btn-primary">
+        <button class="app-button">
             <a href="{{route('order.create')}}">Hace Tu Pedido Ya!</a>
         </button>
     </div>

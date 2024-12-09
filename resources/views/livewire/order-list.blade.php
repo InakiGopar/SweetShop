@@ -3,22 +3,22 @@
 >
     <div class="btn-order-container">
 
-        <button class="btn btn-primary">
+        <button class="app-button">
             <a href="{{route('order.create')}}">Quiero Hacer Un Pedido</a>
         </button>
     
         <button 
-            class="btn btn-secondary"
+            class="app-button"
             wire:click="$set('filter', '')"
-            style="display: {{$filter == '' ? 'none' : 'flex'}}"
+            style="display: {{$filter == '' ? 'none' : 'block'}}"
         >
             Ver Todos Los Pedidos
         </button>
 
         <button 
-            class="btn btn-secondary"
+            class="app-button"
             wire:click="$set('filter', 'mis-pedidos')"
-            style="display: {{$filter === 'mis-pedidos' ? 'none' : 'flex'}}"
+            style="display: {{$filter === 'mis-pedidos' ? 'none' : 'block'}}"
         >
             Ver Mis Pedidos
         </button>
@@ -34,7 +34,11 @@
                         class="label"
                         style="background-color: {{$order->status === 'entregado' ? 'green' : '#cf2e2f;'}}"
                     >                        
-                        <span>{{$order->status}}</span>
+                        <span
+                        class="{{$order->status === 'entregado' ? 'delivered' : ''}}"
+                        >
+                            {{$order->status}}
+                        </span>
                     </div>
                     
                     <h4>Pedido de <span class="order-name">{{$order->user->name}}</span></h4>
@@ -42,12 +46,12 @@
                     <p>Cantidad De Productos: {{$order->quantity}}</p>
                     
                     <div class="order-buttons-container">
-                        <button class="btn btn-primary">
+                        <button class="app-button">
                             <a href="{{route('order.show', [$order])}}">Ver detalle </a>
                         </button>
         
                         @can('update', $order)
-                            <button class="btn btn-secondary">
+                            <button class="app-button">
                                 <a href="{{ route('order.edit', [ $order ]) }}">Editar</a>
                             </button>
                         @endcan
@@ -56,7 +60,7 @@
                             <form action="{{ route('order.delete', [ $order ]) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                <button type="submit" class="app-button-danger">Eliminar</button>
                             </form>
                         @endcan
                     </div>

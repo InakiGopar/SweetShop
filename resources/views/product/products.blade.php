@@ -6,7 +6,7 @@
 
         <div class="products-buttons-container-admin">
             @if (auth()->user()->role === 'admin')
-                <button class="btn btn-primary ">
+                <button class="app-button">
                     <a href="{{route('product.create')}}">Agregar un producto</a>
                 </button>
             @endif

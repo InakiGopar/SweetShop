@@ -1,5 +1,5 @@
-
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,33 +16,16 @@
 
         <!-- Import css and Js -->
         @vite([
-            'resources/css/app.css',
-            'resources/js/app.js',
-            'resources/css/navigation.css',
-            'resources/css/products.css',
-            'resources/css/footer.css',
-            'resources/css/order.css',
+            'resources/css/form.css',
             'resources/css/buttons.css'
         ])
     </head>
-    <body class="font-sans antialiased">
-
-        <div>
-            <!--Nav-->
-            @include('layouts.navigation')
-
-
-            <!--Content-->
-            <main>
-                {{ $slot }}
-            </main>
-
-            <!--Footer-->
-            @include('layouts.footer')
-        </div>
-
-        <!--Bootstrap-->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <body>
+        <main class="form-container">
+            <header>
+                <figure></figure>
+            </header>
+            @yield('content')
+        </main>
     </body>
 </html>

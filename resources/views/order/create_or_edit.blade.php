@@ -1,7 +1,10 @@
+
+@extends('layouts.form')
+
+@section('content')
 <form class="row g-3" method="POST" 
   action="{{empty($order) ? route('order.store') : route('order.update', $order)}}"
 >
-
     @csrf
 
     @if (empty($order))
@@ -41,13 +44,15 @@
     @endif
 
     <div class="form-button-container">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="app-button">
           {{empty($order) ? 'Hacer pedido' : 'Editar pedido'}}
         </button>
-        <button>
+        <button class="app-button-danger">
           <a href="{{route('order.orders')}}">
             Cancelar
           </a>
         </button>
     </div>
   </form>
+@endsection
+

@@ -62,17 +62,38 @@
     font-weight: 600;
 }
 
+.order-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: -20px;
+}
+
+.order-buttons-container button:first-child {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.order-buttons-container button:last-child {
+    margin-top: 10px;
+}
+
 .label {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    left: 120px;
-    width: 100px;
+    left: 110px;
+    width: 150px;
     height: 30px;
     transform: rotate(50deg);
     color: #fff;
 }
+
+.delivered {
+    margin-left: 25px;
+}
+
 
 .label span {
     font-size: 18px;
