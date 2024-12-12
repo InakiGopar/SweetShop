@@ -3,6 +3,7 @@ body {
     background-color: #E4CCB0;
 }
 
+/*Products*/
 .form-container header {
     display: flex;
     flex-direction: column;
@@ -96,5 +97,79 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
+/*Orders*/
 
+
+.order-products-title {
+    margin-bottom: 20px;
+}
+
+.order-products {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.order-products label {
+    width: 200px;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.form-container .input-container {
+    display: flex;
+    align-items: center;
+    width: 70px;
+}
+
+.order-products input {
+    text-align: center;
+    width: 40px;
+}
+
+.info-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    background-image: url('/public/img/icons/ic_info.svg');
+    background-size: cover;
+    background-position: center center;
+    cursor: pointer;
+    position: relative;
+}
+
+.info-icon:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: #723a20;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    top: -25px;
+    left: 0;
+    white-space: nowrap;
+}
+
+
+.form-button-container-order {
+    display: flex;
+    justify-content: center;
+}
+
+.form-button-container-order button:first-child {
+    margin-right: 10px;
+}
+
+.form-container .order-state {
+    width: 280px;
+}
+
+.form-container .order-state label {
+    font-size: 20px;
+}
+
+.total {
+    margin: 20px 0;
+    text-align: center;
+}
 
