@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ProductService
 {
+    private string $FILTER_SWEET_PRODUCTS = 'productos-dulces';
+    private string $FILTER_SALTY_PRODUCTS = 'productos-salados';
     /**
      * Obtiene productos según el filtro.
      *
@@ -16,12 +18,12 @@ class ProductService
     public function getProducts( string $filter = null) {
         
         //me traigo los productos dulces
-        if($filter === 'productos-dulces') {
+        if($filter === $this->FILTER_SWEET_PRODUCTS) {
             return Product::sweetProducts($filter)->get();
         }
 
         //me traigo los productos salados
-        if($filter === 'productos-salados') {
+        if($filter === $this->FILTER_SALTY_PRODUCTS) {
             return Product::saltyProducts($filter)->get();
         }
 

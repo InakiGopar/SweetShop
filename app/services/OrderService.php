@@ -5,11 +5,12 @@ use App\Models\Order;
 
 class OrderService 
 {
-    
+    private string $FILTER = 'mis-pedidos';
+
     public function getOrders(string $filter = null) {
 
         //me traigo solo los pedidos del usuario
-        if($filter === 'mis-pedidos') {
+        if($filter === $this->FILTER) {
             return Order::myOrders($filter)->get();
         }
 

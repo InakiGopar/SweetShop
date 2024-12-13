@@ -37,7 +37,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order): bool
     {
-        return $order->user()->is($user);
+        return $order->user()->is($user) || $user->role === 'admin';
     }
 
     /**
@@ -45,7 +45,7 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order): bool
     {
-        return $order->user()->is($user);
+        return $order->user()->is($user) || $user->role === 'admin';
     }
 
     /**

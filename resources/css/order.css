@@ -90,15 +90,15 @@
     color: #fff;
 }
 
-.delivered {
-    margin-left: 25px;
-}
-
-
 .label span {
     font-size: 18px;
+    margin-left: 18px;
 }
 
 .order-date {
     font-weight: 600;
+}
+
+.delivered {
+    margin-left: 25px;
 }

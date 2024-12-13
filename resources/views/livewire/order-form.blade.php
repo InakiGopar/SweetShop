@@ -42,8 +42,29 @@
 
     @if (!empty($order))
         <div class="order-state">
-            <label for="inputEmail4" class="form-label">Estado del pedido</label>
-            <input type="text" class="form-control"  id="status" name="status"  value="{{$order->status}}">
+            <label 
+                for="inputEmail4" 
+                class="form-label"
+                style="{{$order->status === 'entregado' ? 'color: #2e8f23;' : 'color: #CF2E2F;'}}"
+            >
+                Estado del pedido
+            </label>
+            <div class="order-state-input-container">
+                <input 
+                    type="text" 
+                    class="form-control"  
+                    id="status" 
+                    name="status"  
+                    value="{{$order->status}}"
+                    style=" {{$order->status === 'entregado' ? 'border: 2px solid #2e8f23;' : 'border: 2px solid #CF2E2F;'}} "
+                >
+                <!--Icon Order status-->
+                @if ($order->status === 'entregado')
+                    <figure class="status-icon-done"></figure>
+                @else
+                <figure class="status-icon-pending"></figure>
+                @endif
+            </div>
         </div>
     @endif
 

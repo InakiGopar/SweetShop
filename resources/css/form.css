@@ -161,7 +161,15 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .form-container .order-state {
-    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+}
+
+.form-container .order-state label {
+    width: 60%;
+    margin-bottom: 0;
 }
 
 .form-container .order-state label {
@@ -171,5 +179,34 @@ input[type="number"]::-webkit-outer-spin-button {
 .total {
     margin: 20px 0;
     text-align: center;
+}
+
+
+.order-state-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.order-state-input-container input {
+    margin-right: 3px;
+}
+
+.status-icon-done {
+    width: 20px;
+    height: 20px;
+    background-image: url('/public/img/icons/ic_done.png');
+    background-size: cover;
+    background-position: center center;
+    margin: 0;
+}
+
+.status-icon-pending {
+    width: 30px;
+    height: 30px;
+    background-image: url('/public/img/icons/ic_priority_high.png');
+    background-size: cover;
+    background-position: center center;
+    margin: 0;
+    margin-left: -8px;
 }
 
