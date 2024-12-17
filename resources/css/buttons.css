@@ -10,16 +10,16 @@ button a {
 }
 
 .app-button {
-    background-color: #32465c;
-    border-color: #32465c;
+    background-color: #29435B;
+    border-color: #29435B;
     border-radius: 10px;
     height: 40px;
     padding: 0 12px;
 }
 
 .app-button:hover {
-    background-color: #3b536d;
-    border-color: #3b536d;
+    background-color: #21364a;
+    border-color: #21364a;
 }
 
 .app-button-danger {
@@ -45,4 +45,12 @@ button a {
 
 .button-secondary:hover {
     background-color: rgb(93, 43, 20);
+}
+
+.edit {
+    background-color: #275F4A;
+}
+
+.edit:hover {
+    background-color: #1f4a3a;
 }

@@ -61,4 +61,12 @@ class OrderService
         $order->delete();
     }
 
+    public function calculateTotal(Order $order) {
+        $totalPrice = $order->products->sum(function ($product) {
+            return $product->pivot->quantity * $product->price;
+        }); 
+        
+        return $totalPrice;
+    }
+
 }

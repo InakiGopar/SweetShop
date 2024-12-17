@@ -25,10 +25,13 @@
                     </li>
                 @endforeach
             </ul>
+            <strong>
+                    Precio Total: ${{number_format($totalPrice, 2)}}
+            </strong>
         </div>
     </div>
     <div class="button-back">
-        <button class="btn btn-primary">
+        <button class="app-button">
             <a href="{{route('order.orders')}}">Volver</a>
         </button>
     </div>

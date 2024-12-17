@@ -1,0 +1,23 @@
+.message {
+    border-radius: 15px;
+    color: #fff;
+    margin: 10px 0;
+    padding: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+}
+
+.message span {
+    margin-left: 5px;
+}
+
+.message button {
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    background-image: url('/public/img/icons/ic_close.png');
+    background-size: cover;
+    background-position: center center;
+}

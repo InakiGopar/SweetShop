@@ -40,7 +40,7 @@
                     </button>
                     <div class="buttons-admin-container">
                         @can('update', $product)
-                            <button class="app-button">
+                            <button class="app-button edit">
                                 <a href="{{ route('product.edit', [ $product ]) }}">Editar</a>
                             </button>
                         @endcan

@@ -36,7 +36,7 @@ class OrderForm extends Component
     {
         $this->total = 0;
 
-        //Este bucle calcula el costo total del pedido
+        // Este bucle calcula el costo total del pedido
         // sumando los subtotales de cada producto (cantidad seleccionada × precio unitario).
         foreach ($this->quantities as $productId => $quantity) {
             $product = $this->products->firstWhere('id', $productId);

@@ -38,7 +38,8 @@ class OrderController extends Controller
     }
 
     public function showOrder(Order $order): View {
-        return view('order.show')->with('order', $order);
+        $totalPrice = $this->orderService->calculateTotal($order);
+        return view('order.show')->with('order', $order)->with('totalPrice', $totalPrice);
     }
 
     public function createOrder(): View {

@@ -18,6 +18,7 @@
         @vite([
             'resources/css/app.css',
             'resources/js/app.js',
+            'resources/css/message.css',
             'resources/css/navigation.css',
             'resources/css/products.css',
             'resources/css/footer.css',

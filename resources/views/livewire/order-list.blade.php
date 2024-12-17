@@ -32,7 +32,7 @@
     
                     <div 
                         class="label"
-                        style="background-color: {{$order->status === 'entregado' ? 'green' : '#cf2e2f;'}}"
+                        style="background-color: {{$order->status === 'entregado' ? '#3E7761' : '#cf2e2f;'}}"
                     >                        
                         <span
                         class="{{$order->status === 'entregado' ? 'delivered' : ''}}"
@@ -51,7 +51,7 @@
                         </button>
         
                         @can('update', $order)
-                            <button class="app-button">
+                            <button class="app-button edit">
                                 <a href="{{ route('order.edit', [ $order ]) }}">Editar</a>
                             </button>
                         @endcan
