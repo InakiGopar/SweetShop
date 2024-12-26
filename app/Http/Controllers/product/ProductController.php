@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\product;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
 use App\Services\ProductService;
 use Illuminate\Database\Eloquent\Collection;
@@ -61,6 +62,11 @@ class ProductController extends Controller
         //valido los datos
         $validated = $request->validate($this->getValidationRules(), $this->getErrorMessages());
 
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('products', 'public'); // Almacenar en storage/app/public/products
+            $validated['image_path'] = $path;
+        }
+
         $this->productService->storeProduct($validated);
 
         //utilizo una session flash para mostrar un mensaje al usuario que se creo el producto
@@ -83,8 +89,21 @@ class ProductController extends Controller
      */
     public function updateProduct(Request $request, Product $product) : RedirectResponse {
         $this->authorize('update', $product);
+
         //valido los datos
         $validated = $request->validate($this->getValidationRules(), $this->getErrorMessages());
+        
+        // Verifico si se subió una nueva imagen
+        if ($request->hasFile('image')) {
+        // Eliminar la imagen anterior si existe
+            if ($product->image_path) {
+                Storage::disk('public')->delete($product->image_path);
+            }
+
+            // Guardar la nueva imagen
+            $path = $request->file('image')->store('products', 'public');
+            $validated['image_path'] = $path;
+        }
 
         $this->productService->updateProduct($product, $validated);
 
@@ -114,9 +133,10 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'ingredients' => 'nullable',
             'description' => 'nullable',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_sweet' => 'required|boolean',
         ];
-    }
+    }   
 
     private function getErrorMessages(): array 
     {

@@ -4,7 +4,7 @@
 
 
 @section('content')
-    <form class="row g-3" method="POST"
+    <form class="row g-3" method="POST" enctype="multipart/form-data"
         action="{{empty($product) ? route('product.store') : route('product.update', $product)}}"
     >
     @csrf
@@ -56,6 +56,10 @@
             <textarea class="form-control" id="description" name="description" rows="3" >
                 {{empty($product) ? old('description') : $product->description}}
             </textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Subir Imagen:</label>
+            <input type="file" name="image" id="image" accept="image/*">
         </div>
         <div class="form-group">
             <label>¿Es dulce?</label>

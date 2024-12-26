@@ -46,13 +46,17 @@
                     <p>Cantidad De Productos: {{$order->quantity}}</p>
                     
                     <div class="order-buttons-container">
-                        <button class="app-button">
-                            <a href="{{route('order.show', [$order])}}">Ver detalle </a>
+                        <button class="icon-button more-info">
+                            <a href="{{route('order.show', [$order])}}">
+                                <img src="{{url('img/icons/ic_eye.png')}}" alt="More Info">
+                            </a>
                         </button>
         
                         @can('update', $order)
-                            <button class="app-button edit">
-                                <a href="{{ route('order.edit', [ $order ]) }}">Editar</a>
+                            <button class="icon-button edit">
+                                <a href="{{ route('order.edit', [ $order ]) }}">
+                                    <img src="{{url('img/icons/ic_edit.png')}}" alt="Edit">
+                                </a>
                             </button>
                         @endcan
         
@@ -60,7 +64,9 @@
                             <form action="{{ route('order.delete', [ $order ]) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="app-button-danger">Eliminar</button>
+                                <button type="submit" class="icon-button delete">
+                                    <img src="{{url('img/icons/ic_delete.png')}}" alt="Delete">
+                                </button>
                             </form>
                         @endcan
                     </div>

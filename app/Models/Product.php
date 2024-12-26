@@ -12,7 +12,7 @@ class Product extends Model
     use HasFactory;
 
     //arreglo de los campos que deseo almacenar
-    protected $fillable = ['name', 'price', 'ingredients', 'description', 'is_sweet'];
+    protected $fillable = ['name', 'price', 'ingredients', 'description', 'image_path' ,'is_sweet'];
 
     //un producto puede tener muchos pedidos
     public function orders(): BelongsToMany {

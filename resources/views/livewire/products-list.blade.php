@@ -30,29 +30,34 @@
     <div class="products-list">
         @forelse ($products as $product)
             <div class="card col-4 sm-3" style="width: 18rem;">
-                <img src="img/logo.jpeg" class="card-img-top" alt="...">
+                <img src="{{ asset('storage/' . $product->image_path) }}" alt="Imagen del Producto">
                 <div class="card-body">
                     <h5 class="card-title"> {{ $product->name }}</h5>
                     <p class="card-text"> ${{ $product->price }}</p>
 
-                    <button class="app-button">
-                        <a href="{{ route('product.show', [$product]) }}">Ver detalle</a>
+                    <button class="icon-button more-info">
+                        <a href="{{ route('product.show', [$product]) }}">
+                            <img src="{{url('img/icons/ic_eye.png')}}" alt="More Info">
+                        </a>
                     </button>
-                    <div class="buttons-admin-container">
-                        @can('update', $product)
-                            <button class="app-button edit">
-                                <a href="{{ route('product.edit', [ $product ]) }}">Editar</a>
-                            </button>
-                        @endcan
+
+                    @can('update', $product)
+                        <button class="icon-button edit">
+                            <a href="{{ route('product.edit', [ $product ]) }}">
+                                <img src="{{url('img/icons/ic_edit.png')}}" alt="Edit">
+                            </a>
+                        </button>
+                    @endcan
                 
-                        @can('delete', $product)
-                            <form action="{{ route('product.delete', [ $product ]) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="app-button-danger" type="submit">Eliminar</button>
-                            </form>
-                        @endcan
-                    </div>
+                    @can('delete', $product)
+                        <form action="{{ route('product.delete', [ $product ]) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button class="icon-button delete" type="submit">
+                                <img src="{{url('img/icons/ic_delete.png')}}" alt="Delete">
+                            </button>
+                        </form>
+                    @endcan
                 </div>
             </div>
             @empty

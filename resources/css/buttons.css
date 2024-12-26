@@ -23,16 +23,18 @@ button a {
 }
 
 .app-button-danger {
-    background-color: #CA3032;
-    border-color: #CA3032;
+    border-radius: 10px;
     height: 40px;
     padding: 0 12px;
+    background-color: #CA3032;
+    border-color: #CA3032;
 }
 
 .app-button-danger:hover {
     background-color: #a8292b;
     border-color: #a8292b;
 }
+
 
 .button-secondary {
     border-radius: 20px;
@@ -47,8 +49,51 @@ button a {
     background-color: rgb(93, 43, 20);
 }
 
+.icon-button {
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.more-info {
+    background-color: #29435B;
+    border-color: #29435B;
+}
+
+.more-info a img {
+    width: 30px;
+    height: 30px;
+}
+
+.more-info:hover {
+    background-color: #21364a;
+    border-color: #21364a;
+}
+
+.delete {
+    background-color: #CA3032;
+    border-color: #CA3032;
+}
+
+.delete img {
+    width: 30px;
+    height: 30px;
+}
+
+.delete:hover {
+    background-color: #a8292b;
+    border-color: #a8292b;
+}
+
 .edit {
     background-color: #275F4A;
+}
+
+.edit a img{
+    width: 30px;
+    height: 30px;
 }
 
 .edit:hover {

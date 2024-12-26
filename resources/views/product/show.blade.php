@@ -5,7 +5,7 @@
 <div class="show-product-container">
     <h2>{{$product->name}}</h2>
 
-    <figure class="product-img"></figure>
+    <img src="{{ asset('storage/' . $product->image_path) }}" alt="Imagen del Producto">
 
     <div class="info-product">
 
@@ -19,7 +19,7 @@
         </div>
 
     </div>
-    <button class="btn btn-primary">
+    <button class="app-button">
         <a href="{{route('product.products')}}">Volver</a>
     </button>
 </div>
