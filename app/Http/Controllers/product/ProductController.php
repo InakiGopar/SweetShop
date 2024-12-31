@@ -117,6 +117,11 @@ class ProductController extends Controller
      */
     public function deleteProduct(Product $product): RedirectResponse {
         $this->authorize('delete', $product);
+
+        //Elimino la imagen del producto
+        if($product->image_path) {
+            Storage::disk('public')->delete($product->image_path);
+        }
         
         $this->productService->deleteProduct($product);
 

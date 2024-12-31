@@ -30,7 +30,7 @@
     <div class="products-list">
         @forelse ($products as $product)
             <div class="card col-4 sm-3" style="width: 18rem;">
-                <img src="{{ asset('storage/' . $product->image_path) }}" alt="Imagen del Producto">
+                <img class="img-product" src="{{ asset('storage/' . $product->image_path) }}" alt="Imagen del Producto">
                 <div class="card-body">
                     <h5 class="card-title"> {{ $product->name }}</h5>
                     <p class="card-text"> ${{ $product->price }}</p>

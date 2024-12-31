@@ -37,3 +37,9 @@
 .buttons-admin-container {
     margin-top: 1em
 }
+
+.img-product {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+}

@@ -17,7 +17,8 @@
         <!-- Import css and Js -->
         @vite([
             'resources/css/form.css',
-            'resources/css/buttons.css'
+            'resources/css/buttons.css',
+            'resources/js/uploadImage.js'
         ])
     </head>
     <body>

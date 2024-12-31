@@ -4,7 +4,10 @@
 
 
 @section('content')
-    <form class="row g-3" method="POST" enctype="multipart/form-data"
+    <form 
+        class="row g-3" 
+        method="POST" 
+        enctype="multipart/form-data"
         action="{{empty($product) ? route('product.store') : route('product.update', $product)}}"
     >
     @csrf
@@ -25,7 +28,7 @@
             </ul>
         </div>
     @endif
-
+        <!--Nombre del Producto-->
         <div class="form-group">
             <label for="name">Nombre del Producto</label>
             <input 
@@ -35,6 +38,7 @@
                 value="{{empty($product) ? old('name') : $product->name}}"
             >
         </div>
+        <!--Precio del Producto-->
         <div class="form-group">
             <label for="price">Precio</label>
             <input 
@@ -43,6 +47,7 @@
                 value="{{empty($product) ? old('price') : $product->price}}"
             >
         </div>
+        <!--Ingredeintes-->
         <div class="form-group">
             <label for="ingredients">Ingredientes</label>
             <input
@@ -51,16 +56,24 @@
                 value="{{empty($product) ? old('ingredients') : $product->ingredients}}"
             >
         </div>
+        <!--Descripción-->
         <div class="form-group">
             <label for="description">Descripción</label>
             <textarea class="form-control" id="description" name="description" rows="3" >
                 {{empty($product) ? old('description') : $product->description}}
             </textarea>
         </div>
-        <div class="form-group">
-            <label for="image">Subir Imagen:</label>
-            <input type="file" name="image" id="image" accept="image/*">
+        <!--Imagen del Producto-->
+        <div class="form-group image-container">
+
+            <div class="image-label">
+                <label for="image" class="upload-image">Subir Imagen</label>
+                <input type="file" name="image" id="image" accept="image/*" id="image-upload" onchange="previewImage(event)">
+            </div>
+
+            <div id="image-preview" class="image-preview-container"></div>
         </div>
+        <!--¿Es dulce?-->
         <div class="form-group">
             <label>¿Es dulce?</label>
             <div class="form-check">
@@ -76,6 +89,7 @@
                 </label>
             </div>
         </div>
+        <!--Botones-->
         <div class="form-button-container">
             <button type="submit" class="app-button">
                 {{empty($product) ? 'Agregar Producto' : 'Editar producto'}}
@@ -84,6 +98,7 @@
                 <a href="{{route('product.products')}}">Cancelar</a>
             </button>
         </div>
+
     </form>
 @endsection
 
