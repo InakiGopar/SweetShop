@@ -1,4 +1,4 @@
-# Small Business Management Application
+# OrganizaTe
 
 ## Description
 This web application is designed to help small businesses efficiently organize and manage their inventory and orders. It features a clean, minimalist interface to enhance user experience. The main functionalities include:
