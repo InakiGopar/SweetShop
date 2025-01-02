@@ -1,122 +1,104 @@
-# OrganizaTe
+# Small Business Management Application
 
-Este es un proyecto en desarrollo que tiene como objetivo ayudar a pequeñas empresas a organizar y gestionar su inventario y pedidos de manera eficiente. La aplicación está desarrollada principalmente con **Laravel** y **Livewire**, y cuenta con una interfaz clara, sencilla y minimalista.
+## Description
+This web application is designed to help small businesses efficiently organize and manage their inventory and orders. It features a clean, minimalist interface to enhance user experience. The main functionalities include:
 
-## Funcionalidades principales
+- **Products Section**: Displays the business's available stock to customers.
+- **Orders Section**: Allows users to easily place and manage orders.
+- **User Registration**: Implemented with Laravel Breeze, supporting role-based access control (admin and default user).
 
-- **Productos**: Visualización del inventario disponible de la empresa.
-- **Pedidos**: Realización de órdenes de forma organizada y sencilla.
-- **Autenticación**: Sistema de registro y login con **Laravel Breeze**.
-- **Roles de usuario**: Diferenciación entre usuarios administradores y usuarios regulares.
+## Objective
+The goal of this application is to provide small businesses with a simple yet powerful tool to streamline their operations and improve customer interactions.
 
-## Tecnologías utilizadas
+## Features
+- Clear and intuitive interface.
+- Role-based access (admin and user).
+- Real-time management of products and orders.
 
-- **Backend**: Laravel 10, Livewire 3.5
-- **Frontend**: Bootstrap, Vite
-- **Autenticación**: Laravel Breeze
-- **Otras dependencias**: Bootstrap Icons, Axios
+## Dependencies
 
-## Requisitos previos
+### PHP/Laravel Dependencies
+- **PHP**: ^8.1
+- **Laravel Framework**: ^10.10
+- **Laravel Sanctum**: ^3.3
+- **Laravel Tinker**: ^2.8
+- **Livewire**: ^3.5
+- **GuzzleHTTP**: ^7.2
 
-- PHP >= 8.1
-- Composer
-- Node.js (con npm o yarn)
-- MySQL o cualquier base de datos compatible con Laravel
+#### Development Dependencies
+- **FakerPHP**: ^1.9.1
+- **Laravel Breeze**: ^1.29
+- **Laravel Pint**: ^1.0
+- **Laravel Sail**: ^1.18
+- **Mockery**: ^1.4.4
+- **PHPUnit**: ^10.1
+- **Spatie Laravel Ignition**: ^2.0
 
-## Dependencias
+### JavaScript and CSS Dependencies
+- **Axios**: ^1.6.4
+- **TailwindCSS**: ^3.1.0
+- **PostCSS**: ^8.4.31
+- **Autoprefixer**: ^10.4.2
+- **Bootstrap Icons**: ^1.11.3
+- **Vite**: ^5.0.0
+- **@tailwindcss/forms**: ^0.5.2
 
-### Backend (composer.json)
+## Installation
 
-- `php`: ^8.1
-- `laravel/framework`: ^10.10
-- `guzzlehttp/guzzle`: ^7.2
-- `laravel/sanctum`: ^3.3
-- `livewire/livewire`: ^3.5
+### Prerequisites
+- PHP ^8.1 installed.
+- Composer installed.
+- Node.js and npm installed.
 
-**Dependencias de desarrollo**:
+### Steps
 
-- `laravel/breeze`: ^1.29
-- `laravel/pint`: ^1.0
-- `laravel/sail`: ^1.18
-- `phpunit/phpunit`: ^10.1
-- `spatie/laravel-ignition`: ^2.0
-
-### Frontend (package.json)
-
-- `@tailwindcss/forms`: ^0.5.2
-- `autoprefixer`: ^10.4.2
-- `axios`: ^1.6.4
-- `bootstrap-icons`: ^1.11.3
-- `laravel-vite-plugin`: ^1.0.0
-- `postcss`: ^8.4.31
-- `tailwindcss`: ^3.1.0
-- `vite`: ^5.0.0
-
-## Instalación y configuración
-
-1. Clona el repositorio:
-
+1. **Clone the repository:**
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   cd <NOMBRE_DEL_REPOSITORIO>
+   git clone <repository_url>
+   cd <repository_folder>
    ```
 
-2. Instala las dependencias de PHP:
-
+2. **Install PHP dependencies:**
    ```bash
    composer install
    ```
 
-3. Instala las dependencias de Node.js:
-
+3. **Install JavaScript dependencies:**
    ```bash
    npm install
    ```
 
-4. Copia el archivo `.env.example` y configúralo:
+4. **Set up the environment:**
+   - Duplicate the `.env.example` file and rename it to `.env`.
+   - Configure your database and other settings in the `.env` file.
 
-   ```bash
-   cp .env.example .env
-   ```
-
-   Configura la conexión a tu base de datos en el archivo `.env`.
-
-5. Genera la clave de la aplicación:
-
+5. **Generate application key:**
    ```bash
    php artisan key:generate
    ```
 
-6. Migra las tablas de la base de datos:
-
+6. **Run migrations:**
    ```bash
    php artisan migrate
    ```
 
-7. Genera los assets del frontend:
+7. **Link storage:**
+   ```bash
+   php artisan storage:link
+   ```
 
+8. **Build frontend assets:**
    ```bash
    npm run dev
    ```
 
-8. Inicia el servidor de desarrollo:
-
+9. **Run the development server:**
    ```bash
    php artisan serve
    ```
 
-   La aplicación estará disponible en `http://localhost:8000`.
+10. **Access the application:**
+    Open your browser and navigate to `http://127.0.0.1:8000`.
 
-## Notas adicionales
 
-- Las imágenes subidas para los productos se almacenan en el directorio `storage/app/public`. Asegúrate de correr el siguiente comando para enlazar el almacenamiento público:
 
-  ```bash
-  php artisan storage:link
-  ```
-
-- En caso de errores, verifica que tienes todas las extensiones necesarias de PHP habilitadas (como `fileinfo`).
-
----
-
-¡Gracias por visitar este proyecto! Si tienes alguna sugerencia o pregunta, no dudes en crear un issue o contactarme a través de LinkedIn. 🚀
