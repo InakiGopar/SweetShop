@@ -5,7 +5,11 @@
 <div class="show-product-container">
     <h2>{{$product->name}}</h2>
 
+
+    
     <img src="{{ asset('storage/' . $product->image_path) }}" alt="Imagen del Producto">
+    
+
 
     <div class="info-product">
 
@@ -13,10 +17,14 @@
             <p>{{$product->description}}</p>
         </div>
 
-        <div class="ingredients">
-            <figure class="ingredients-icon"></figure>
-            <p>{{$product->ingredients}}</p>
-        </div>
+        <div class="line-brown"></div>
+
+        @if (auth()->user()->role === 'admin')
+            <div class="ingredients">
+                <figure class="ingredients-icon"></figure>
+                <p>{{$product->ingredients}}</p>
+            </div>
+        @endif
 
     </div>
     <button class="app-button">

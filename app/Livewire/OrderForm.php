@@ -16,9 +16,9 @@ class OrderForm extends Component
         $this->products = $products;
         $this->order = $order;
 
-        //Este bucle inicializa el array $quantities, que asocia cada producto con su cantidad seleccionada.
+        // Este bucle inicializa el array $quantities, que asocia cada producto con su cantidad seleccionada.
         // El valor depende de si el componente está creando un pedido nuevo o editando uno existente.
-        foreach ($this->products as $product) {
+        foreach($this->products as $product) {
             $this->quantities[$product->id] = $order
                 ? ($order->products->where('id', $product->id)->first()?->pivot->quantity ?? 0)
                 : 0;
@@ -37,7 +37,7 @@ class OrderForm extends Component
         $this->total = 0;
 
         // Este bucle calcula el costo total del pedido
-        // sumando los subtotales de cada producto (cantidad seleccionada × precio unitario).
+        // sumando los subtotales de cada producto (cantidad seleccionada × precio).
         foreach ($this->quantities as $productId => $quantity) {
             $product = $this->products->firstWhere('id', $productId);
             if ($product) {

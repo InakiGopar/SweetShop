@@ -71,7 +71,8 @@
                 <input type="file" name="image" id="image" accept="image/*" id="image-upload" onchange="previewImage(event)">
             </div>
 
-            <div id="image-preview" class="image-preview-container"></div>
+            <div id="image-preview" class="image-preview-container">
+            </div>
         </div>
         <!--¿Es dulce?-->
         <div class="form-group">
