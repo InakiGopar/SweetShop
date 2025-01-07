@@ -1,9 +1,12 @@
 <x-app-layout>
     <div class="products-container">
+
         <h1>Nuestros Productos</h1>
-        <!--Mensaje al usario que le informa si se completo la accion que solicito-->
+
+        <!--Message to the user informing them if the action they requested was completed-->
         <livewire:message />
 
+        <!--Add Product button only adim users-->
         <div class="products-buttons-container-admin">
             @if (auth()->user()->role === 'admin')
                 <button class="app-button">
@@ -12,7 +15,7 @@
             @endif
         </div> 
 
-        <!-- Incluye el componente de Livewire para mostrar y filtrar productos -->
+        <!-- Livewire component -->
         <livewire:products-list />
     </div>
 </x-app-layout>

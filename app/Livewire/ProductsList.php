@@ -8,16 +8,16 @@ use Livewire\Component;
 class ProductsList extends Component
 {
     public string $filter = '';
+    public string $productSearch = '';
 
-    public function updatedFilter($value)
-    {
-        $this->filter = $value;
+    public function showAll() {
+        $this->filter = '';
+        $this->productSearch = '';
     }
 
     public function render()
     {
-        $products = (new ProductService())->getProducts($this->filter);
-        
+        $products = (new ProductService())->getProducts($this->filter, $this->productSearch);
         return view('livewire.products-list', ['products' => $products]);
     }
 }

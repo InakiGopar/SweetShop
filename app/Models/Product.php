@@ -27,4 +27,8 @@ class Product extends Model
         $query->where('is_sweet', false);
     }
 
+    public function scopeProductName(Builder $query, $name) {
+        $query->where('name' , 'like', '%' . $name . '%');
+    }
+
 }

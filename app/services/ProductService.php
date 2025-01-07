@@ -10,29 +10,33 @@ class ProductService
     private string $FILTER_SWEET_PRODUCTS = 'productos-dulces';
     private string $FILTER_SALTY_PRODUCTS = 'productos-salados';
     /**
-     * Obtiene productos según el filtro.
+     * Get all products according to the filter
      *
      * @param string|null $filter
      * @return Collection
      */
-    public function getProducts( string $filter = null) {
+    public function getProducts( string $filter = null, string $name = null) {
         
-        //me traigo los productos dulces
-        if($filter === $this->FILTER_SWEET_PRODUCTS) {
-            return Product::sweetProducts($filter)->get();
-        }
+        $query = Product::query();
 
-        //me traigo los productos salados
-        if($filter === $this->FILTER_SALTY_PRODUCTS) {
-            return Product::saltyProducts($filter)->get();
+        // Apply the sweet or salty filter if provided
+        if ($filter === $this->FILTER_SWEET_PRODUCTS) {
+            $query->sweetProducts();
+        } elseif ($filter === $this->FILTER_SALTY_PRODUCTS) {
+            $query->saltyProducts();
         }
-
-        //me traigo todos los productos
-        return Product::get();
+    
+        // Apply the search term filter if provided
+        if ($name) {
+            $query->productName($name);
+        }
+    
+        // Return the filtered results
+        return $query->get();
     }
 
     /**
-     * Crea un producto.
+     * Crete a product.
      *
      * @param array $data
      * @return Product
@@ -42,7 +46,7 @@ class ProductService
     }
 
     /**
-     * Actualiza un producto.
+     * Edit a product.
      *
      * @param Product $product
      * @param array $data
@@ -55,7 +59,7 @@ class ProductService
     }
 
     /**
-     * Elimina un producto.
+     * Delete a product.
      *
      * @param Product $product
      * @return bool

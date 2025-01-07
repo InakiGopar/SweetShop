@@ -24,29 +24,30 @@ class ProductController extends Controller
 
 
     /**
-     * Obtiene productos y los devuelve como una colección.
+     * Get all the products and return a Collection.
      */
     public function getProducts(Request $request = null): Collection  { 
         $filter = $request?->filtro ?? null;
-        return $this->productService->getProducts($filter);
+        $name = $request?->name ?? null;
+        return $this->productService->getProducts($filter, $name);
     }
 
     /**
-     * Muestra todos los productos en la vista.
+     * Show all the products.
      */
     public function showProducts(Request $request): View {
         return view('product.products')->with('products', $this->getProducts($request)); //with agrega data a la vista
     }
 
     /**
-     * Muestra un producto específico.
+     * Show a product.
      */
     public function showProduct(Product $product): View {
         return view('product.show')->with('product', $product );
     }
 
     /**
-     * Muestra el formulario para crear un producto.
+     * Displays a form to create a new product.
      */
     public function createProduct(): View {
         $this->authorize('create', Product::class);
@@ -54,12 +55,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Almacena un nuevo producto.
+     * Save a new product.
      */
     public function storeProduct(Request $request): RedirectResponse {
         $this->authorize('create', Product::class);
 
-        //valido los datos
+        //validate the data
         $validated = $request->validate($this->getValidationRules(), $this->getErrorMessages());
 
         if ($request->hasFile('image')) {
@@ -69,15 +70,15 @@ class ProductController extends Controller
 
         $this->productService->storeProduct($validated);
 
-        //utilizo una session flash para mostrar un mensaje al usuario que se creo el producto
+        // Use flash session to display a message to the user that the product was created successfully
         session()->flash('message', 'Producto creado exitosamente!');
 
-        //redirigo a la vista donde se encuentran todos los productos
+        // Redirect to show all products
         return redirect()->route('product.products');
     }
 
     /**
-     * Muestra el formulario para editar un producto existente.
+     * Displays a form to edit a product.
      */
     public function editProduct(Product $product): View {
         $this->authorize('update', $product);
@@ -85,22 +86,22 @@ class ProductController extends Controller
     }
 
     /**
-     * Actualiza un producto existente.
+     * Updated a product.
      */
     public function updateProduct(Request $request, Product $product) : RedirectResponse {
         $this->authorize('update', $product);
 
-        //valido los datos
+        //validate the data
         $validated = $request->validate($this->getValidationRules(), $this->getErrorMessages());
         
-        // Verifico si se subió una nueva imagen
+        // Check if a new image was uploaded
         if ($request->hasFile('image')) {
-        // Eliminar la imagen anterior si existe
+        // Delete the old image if exist.
             if ($product->image_path) {
                 Storage::disk('public')->delete($product->image_path);
             }
 
-            // Guardar la nueva imagen
+            // Save the new image.
             $path = $request->file('image')->store('products', 'public');
             $validated['image_path'] = $path;
         }
@@ -113,12 +114,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Elimina un producto.
+     * Delete a product.
      */
     public function deleteProduct(Product $product): RedirectResponse {
         $this->authorize('delete', $product);
 
-        //Elimino la imagen del producto
+        //Delete the product image.
         if($product->image_path) {
             Storage::disk('public')->delete($product->image_path);
         }

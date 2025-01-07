@@ -34,6 +34,23 @@
     color: #e9decdec;
 }
 
+.search-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 160px;
+    top: 310px;
+}
+
+.search-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background-image: url('/public/img/icons/ic_search_brown.png');
+    background-position: center center;
+    background-size: cover;
+}
+
 .buttons-admin-container {
     margin-top: 1em
 }

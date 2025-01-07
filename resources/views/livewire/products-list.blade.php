@@ -1,14 +1,16 @@
 <div class="products-list-container">
     <div class="button-fillters-container">
 
+        <!--Show all products button-->
         <button 
             class="button-secondary"  
-            wire:click="$set('filter', '')"
-            style= "background-color: {{$filter == '' ? '#5D2B14' : '#8C543A'}}"
+            wire:click="showAll"
+            style= "background-color: {{$filter === '' ? '#5D2B14' : '#8C543A'}}"
         >
             Todos los productos
         </button>
 
+        <!--Sweet products filter button-->
         <button 
             class="button-secondary" 
             wire:click="$set('filter', 'productos-dulces')"
@@ -17,6 +19,7 @@
             Productos dulces
         </button>
 
+        <!--Salty products filter button-->
         <button 
             class="button-secondary" 
             wire:click="$set('filter', 'productos-salados')"
@@ -27,6 +30,18 @@
         
     </div>
 
+    <!--Search-->
+    <div class="search-container">
+        <div class="search-icon"></div>
+        <input 
+            type="text" 
+            class="search-input" 
+            placeholder="Buscar producto..." 
+            wire:model.lazy="productSearch"
+        >
+    </div>
+
+    <!--List of products-->
     <div class="products-list">
         @forelse ($products as $product)
             <div class="card col-4 sm-3" style="width: 18rem;">

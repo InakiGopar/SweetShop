@@ -28,7 +28,8 @@
             </ul>
         </div>
     @endif
-        <!--Nombre del Producto-->
+
+        <!--Name of the product-->
         <div class="form-group">
             <label for="name">Nombre del Producto</label>
             <input 
@@ -38,7 +39,8 @@
                 value="{{empty($product) ? old('name') : $product->name}}"
             >
         </div>
-        <!--Precio del Producto-->
+
+        <!--Price of the product-->
         <div class="form-group">
             <label for="price">Precio</label>
             <input 
@@ -47,7 +49,8 @@
                 value="{{empty($product) ? old('price') : $product->price}}"
             >
         </div>
-        <!--Ingredeintes-->
+
+        <!--Ingredients-->
         <div class="form-group">
             <label for="ingredients">Ingredientes</label>
             <input
@@ -56,14 +59,16 @@
                 value="{{empty($product) ? old('ingredients') : $product->ingredients}}"
             >
         </div>
-        <!--Descripción-->
+
+        <!--Description-->
         <div class="form-group">
             <label for="description">Descripción</label>
             <textarea class="form-control" id="description" name="description" rows="3" >
                 {{empty($product) ? old('description') : $product->description}}
             </textarea>
         </div>
-        <!--Imagen del Producto-->
+
+        <!--Product image-->
         <div class="form-group image-container">
 
             <div class="image-label">
@@ -74,7 +79,8 @@
             <div id="image-preview" class="image-preview-container">
             </div>
         </div>
-        <!--¿Es dulce?-->
+
+        <!--Is sweet or salty?-->
         <div class="form-group">
             <label>¿Es dulce?</label>
             <div class="form-check">
@@ -90,7 +96,8 @@
                 </label>
             </div>
         </div>
-        <!--Botones-->
+        
+        <!--Buttons-->
         <div class="form-button-container">
             <button type="submit" class="app-button">
                 {{empty($product) ? 'Agregar Producto' : 'Editar producto'}}
