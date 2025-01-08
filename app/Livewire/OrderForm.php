@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Services\ProductService;
 
 class OrderForm extends Component
 {
@@ -10,14 +11,14 @@ class OrderForm extends Component
     public $order;
     public $quantities = [];
     public $total = 0;
+    public $search = ''; 
 
     public function mount($products, $order = null) 
     {
         $this->products = $products;
         $this->order = $order;
 
-        // Este bucle inicializa el array $quantities, que asocia cada producto con su cantidad seleccionada.
-        // El valor depende de si el componente está creando un pedido nuevo o editando uno existente.
+        //This loop initializes the $quantities array, which associates each product with its selected quantity.
         foreach($this->products as $product) {
             $this->quantities[$product->id] = $order
                 ? ($order->products->where('id', $product->id)->first()?->pivot->quantity ?? 0)
@@ -25,6 +26,12 @@ class OrderForm extends Component
         }
 
         $this->calculateTotal();
+    }
+
+    public function updatedSearch()
+    {
+        // Dynamically filter products based on the search query
+        $this->products = (new ProductService())->getProducts(null, $this->search);
     }
 
     public function updatedQuantities()
@@ -36,8 +43,7 @@ class OrderForm extends Component
     {
         $this->total = 0;
 
-        // Este bucle calcula el costo total del pedido
-        // sumando los subtotales de cada producto (cantidad seleccionada × precio).
+        // This loop calculates the total cost of the order (selected quantity × price).
         foreach ($this->quantities as $productId => $quantity) {
             $product = $this->products->firstWhere('id', $productId);
             if ($product) {

@@ -19,7 +19,18 @@
     @endif
 
     <h2 class="order-products-title">¿Que vas a Pedir hoy?</h2>
+
+    <!-- Search Input -->
+    <div class="search-container">
+        <input 
+            type="text" 
+            placeholder="Buscar productos..." 
+            class="form-control"
+            wire:model.lazy="search" 
+        >
+    </div>
     
+    <!--Products list-->
     @foreach($products as $product)
         <div class="order-products">
             <label for="product_{{ $product->id }}">{{ $product->name }}</label>
