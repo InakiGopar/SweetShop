@@ -48,7 +48,7 @@ class OrderController extends Controller
     }
 
     public function storeOrder(Request $request): RedirectResponse {
-        //valido los datos
+        //validate data
         $validated = $request->validate($this->validationRulesCreate, $this->errorMessages);
 
         $this->orderService->storeOrder($request->all(), auth()->id());

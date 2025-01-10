@@ -29,6 +29,33 @@
             wire:model.lazy="search" 
         >
     </div>
+
+    <!-- Filter sweet or salty -->
+    <div class="form-group filter-order">
+        <label>Filtrar por</label>
+        <div class="form-check">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="is_sweet" 
+                id="is_sweet_yes" 
+                value="productos-dulces" 
+                wire:click="$set('filter', 'productos-dulces')"
+            >
+            <label class="form-check-label" for="is_sweet_yes">Dulce</label>
+        </div>
+        <div class="form-check">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="is_sweet" 
+                id="is_sweet_no" 
+                value="productos-salados" 
+                wire:click="$set('filter', 'productos-salados')"
+            >
+            <label class="form-check-label" for="is_sweet_no">Salado</label>
+        </div>
+    </div>
     
     <!--Products list-->
     @foreach($products as $product)
@@ -48,6 +75,17 @@
             @endif
             </div>
         </div>
+    @endforeach
+    
+    <!-- Add hidden inputs for products not in the current filter -->
+    @foreach($allProducts as $product)
+        @unless($products->contains('id', $product->id))
+            <input 
+                type="hidden" 
+                name="products[{{ $product->id }}]" 
+                value="{{ $quantities[$product->id] }}"
+            >
+        @endunless
     @endforeach
 
 

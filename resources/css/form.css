@@ -246,3 +246,20 @@ input[type="file"] {
 .search-container input {
     width: 450px;
 }
+
+
+.filter-order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.filter-order .form-check {
+    width: 20%;
+}
+
+.filter-order label {
+    width: 20%;
+}
+

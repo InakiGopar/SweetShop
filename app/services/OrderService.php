@@ -20,39 +20,44 @@ class OrderService
 
     public function storeOrder(array $data, int $userId)
     {
-        //crear un nuevo registro en la tabla Order
+        //dd($data['products']);
+        // Create a new order
         $order = Order::create([
             'user_id' => $userId,
-            'quantity' => array_sum($data['products'])
+            'quantity' => array_sum($data['products']), // Total quantity from all products
         ]);
-
-        // Asociar productos con cantidades en la tabla pivote
+    
+        // Attach products with quantities to the order
+        $productsWithQuantities = [];
         foreach ($data['products'] as $productId => $quantity) {
-            if ($quantity > 0) {
-                $order->products()->attach($productId, ['quantity' => $quantity]);
+            if ($quantity > 0) { // Ignore products with 0 quantity
+                $productsWithQuantities[$productId] = ['quantity' => $quantity];
             }
         }
-
+    
+        $order->products()->attach($productsWithQuantities);
+    
         return $order;
-    }
+    }   
 
 
-    public function updateOrder(Order $order, array $data) {
+    public function updateOrder(Order $order, array $data)
+    {
         $order->update([
-            'quantity' => array_sum($data['products']),
-            'status' => $data['status'],
+            'quantity' => array_sum($data['products']), // Total quantity
+            'status' => $data['status'], // Update status
         ]);
 
-        // Sincronizar con la tabla pivote
+        // Sync all products and quantities
         $productsWithQuantities = [];
-        foreach ($data['products'] as $product_id => $quantity) {
+        foreach ($data['products'] as $productId => $quantity) {
             if ($quantity > 0) {
-                $productsWithQuantities[$product_id] = ['quantity' => $quantity];
+                $productsWithQuantities[$productId] = ['quantity' => $quantity];
             }
         }
 
         $order->products()->sync($productsWithQuantities);
-        
+
         return $order;
     }
 
