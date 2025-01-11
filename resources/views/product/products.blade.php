@@ -6,7 +6,7 @@
         <!--Message to the user informing them if the action they requested was completed-->
         <livewire:message />
 
-        <!--Add Product button only adim users-->
+        <!--Add Product button (only admin users)-->
         <div class="products-buttons-container-admin">
             @if (auth()->user()->role === 'admin')
                 <button class="app-button">

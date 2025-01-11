@@ -77,7 +77,7 @@
         </div>
     @endforeach
     
-    <!-- Add hidden inputs for products not in the current filter -->
+    <!-- Hidden inputs for products not in the current filter -->
     @foreach($allProducts as $product)
         @unless($products->contains('id', $product->id))
             <input 

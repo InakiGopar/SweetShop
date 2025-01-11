@@ -1,0 +1,76 @@
+.notification-container {
+    position: relative;
+    width: 60px;
+    height: 50px;
+}
+
+.ic-notification {
+    margin-top: 20px;
+    background-image: url('/public/img/icons/ic_notification.png');
+    background-size: cover;
+    background-position: center center;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.notification-amount {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 25px;
+    bottom: 30px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    background-color: #cc2d35;
+}
+
+.notification-amount span {
+    color: #fff;
+    font-size: 0.6em;
+}
+
+.order-pending-list {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    background: #733a20;
+    border: 1px solid #733a20;
+    color: #e0d1b6;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0 15px;
+    margin-top: 10px;
+    position: absolute;
+    top: 80px;
+    right: -60px;
+    z-index: 1000;
+    width: 200px;
+    transition: opacity 1s ease-in;
+}
+
+.order-pending-list.visible {
+    max-height: 500px;
+    opacity: 1;
+}
+
+
+.order-pending-list ul li {
+    list-style: none;
+    width: 60%;
+}
+
+.order-pending-list ul li:first-child {
+    margin-top: 10px;
+}
+
+.order-pending-list ul li a {
+    font-size: 1em;
+}
+
+.order-pending-list ul li a:hover {
+    color: #beb29b;
+}
+

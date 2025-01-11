@@ -9,18 +9,17 @@ class OrderService
 
     public function getOrders(string $filter = null) {
 
-        //me traigo solo los pedidos del usuario
+        //get only user filter
         if($filter === $this->FILTER) {
             return Order::myOrders($filter)->get();
         }
 
-        //me traigo todos los pedidos de la base de datos
+        //get all orders
         return Order::get();
     }
 
     public function storeOrder(array $data, int $userId)
     {
-        //dd($data['products']);
         // Create a new order
         $order = Order::create([
             'user_id' => $userId,
@@ -72,6 +71,10 @@ class OrderService
         }); 
         
         return $totalPrice;
+    }
+
+    public function getPendingOrders() {
+        return Order::pendingOrders()->get();
     }
 
 }

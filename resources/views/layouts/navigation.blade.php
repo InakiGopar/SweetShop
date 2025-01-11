@@ -57,6 +57,11 @@
                     </form>
                 </li>
             </ul>
+            <div>
+                @if (auth()->user()->role === 'admin')
+                    <livewire:order-notification/>
+                @endif
+            </div>
         </div>
     </div>
 </nav>

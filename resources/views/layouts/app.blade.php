@@ -20,6 +20,7 @@
             'resources/js/app.js',
             'resources/css/message.css',
             'resources/css/navigation.css',
+            'resources/css/orderNotification.css',
             'resources/css/products.css',
             'resources/css/footer.css',
             'resources/css/order.css',

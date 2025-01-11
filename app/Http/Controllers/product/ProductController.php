@@ -27,8 +27,10 @@ class ProductController extends Controller
      * Get all the products and return a Collection.
      */
     public function getProducts(Request $request = null): Collection  { 
+
         $filter = $request?->filtro ?? null;
         $name = $request?->name ?? null;
+        
         return $this->productService->getProducts($filter, $name);
     }
 
@@ -36,7 +38,7 @@ class ProductController extends Controller
      * Show all the products.
      */
     public function showProducts(Request $request): View {
-        return view('product.products')->with('products', $this->getProducts($request)); //with agrega data a la vista
+        return view('product.products')->with('products', $this->getProducts($request)); //with add data on the view
     }
 
     /**

@@ -12,26 +12,30 @@ class Order extends Model
 {
     use HasFactory;
 
-    //arreglo de los campos que deseo almacenar
+    //Array of the fields I want to store
     protected $fillable = ['user_id', 'quantity', 'status'];
 
     protected $casts = ['created_at' => 'datetime'];
 
-    // un pedido pertenece a un usuario
+    // An order has one user
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
 
-    //un pedido puede tener muchos productos
+    //An order has many products
     public function products(): BelongsToMany {
         return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
     /**
-     * Esta funcion filtra los pedidos del usuario mostrando solo los que les pertenece a el.
+     * This function filters the user's own order.
      */
     public function scopeMyOrders(Builder $query) {
             $query->where('user_id', auth()->id());
+    }
+
+    public function scopePendingOrders(Builder $query) {
+        $query->where('status', 'pendiente');
     }
 }
 

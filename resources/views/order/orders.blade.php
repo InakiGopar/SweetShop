@@ -1,10 +1,10 @@
 <x-app-layout>
     <div class="section-orders">
         <h1>Pedidos </h1>
-        <!--Mensaje al usario que le informa si se completo la accion que solicito-->
+        <!--Message to the user informing them if the action they requested was completed-->
         <livewire:message />
         
-        <!--Lista de pedidos que cambia dinamicamente -->
+        <!--Dynamic list of products -->
         <livewire:order-list/>
     </div>
 </x-app-layout>

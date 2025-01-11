@@ -35,6 +35,7 @@ class ProductService
         return $query->get();
     }
 
+
     /**
      * Crete a product.
      *
