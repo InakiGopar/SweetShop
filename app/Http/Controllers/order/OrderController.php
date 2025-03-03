@@ -11,16 +11,6 @@ use App\Services\OrderService;
 
 class OrderController extends Controller
 {
-    private array $validationRulesCreate = [
-    ];
-
-    private array $validationRulesUpdate = [
-        'status' => 'required|string',
-    ];
-
-    private array $errorMessages = [
-        'quantity.required' => 'debe indicar que cantidad de pedidos va a realizar',
-    ];
 
     protected OrderService $orderService;
     protected ProductController $productController;
@@ -48,8 +38,16 @@ class OrderController extends Controller
     }
 
     public function storeOrder(Request $request): RedirectResponse {
-        //validate data
-        $validated = $request->validate($this->validationRulesCreate, $this->errorMessages);
+
+         //validate data
+        $request->validate([
+            'products' => ['required', 'array', function ($attribute, $value, $fail) {
+                $totalQuantity = array_sum($value);
+                if ($totalQuantity < 1) { 
+                    $fail('Debes tener al menos un producto selecionado para realizar un pedido.');
+                }
+            }],
+        ]);
 
         $this->orderService->storeOrder($request->all(), auth()->id());
         
@@ -68,7 +66,16 @@ class OrderController extends Controller
     public function updateOrder(Request $request, Order $order): RedirectResponse {
         $this->authorize('update', $order);
 
-        $validated = $request->validate($this->validationRulesUpdate);
+        //validate data
+        $validated = $request->validate([
+            'status' => 'required|string',
+            'products' => ['required', 'array', function ($attribute, $value, $fail) {
+                $totalQuantity = array_sum($value);
+                if ($totalQuantity < 1) { 
+                    $fail('Debes tener al menos un producto seleccionado con cantidad mayor a 0.');
+                }
+            }],
+        ]);
 
         $this->orderService->updateOrder($order, array_merge($validated, ['products'=> $request->products]));
 

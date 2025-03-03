@@ -24,9 +24,9 @@ class ProductController extends Controller
 
 
     /**
-     * Get all the products and return a Collection.
+     * Get all the products and return a Product Collection.
      */
-    public function getProducts(Request $request = null): Collection  { 
+    public function getProducts(?Request $request = null): Collection  { 
 
         $filter = $request?->filtro ?? null;
         $name = $request?->name ?? null;
@@ -66,13 +66,13 @@ class ProductController extends Controller
         $validated = $request->validate($this->getValidationRules(), $this->getErrorMessages());
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('products', 'public'); // Almacenar en storage/app/public/products
+            $path = $request->file('image')->store('products', 'public'); // Store in storage/app/public/products
             $validated['image_path'] = $path;
         }
 
         $this->productService->storeProduct($validated);
 
-        // Use flash session to display a message to the user that the product was created successfully
+        // Use flash session to display a message the product was created successfully
         session()->flash('message', 'Producto creado exitosamente!');
 
         // Redirect to show all products
@@ -134,7 +134,7 @@ class ProductController extends Controller
     }
 
 
-    private function getValidationRules() 
+    private function getValidationRules(): array
     {
         return [
             'name' => 'required|string',

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Product;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 class ProductService
@@ -15,7 +16,8 @@ class ProductService
      * @param string|null $filter
      * @return Collection
      */
-    public function getProducts( string $filter = null, string $name = null) {
+    public function getProducts( ?string $filter, ?string $name ): Collection
+    {
         
         $query = Product::query();
 

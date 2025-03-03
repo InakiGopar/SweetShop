@@ -4,9 +4,12 @@ namespace App\Livewire;
 
 use App\Services\ProductService;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ProductsList extends Component
 {
+    use WithPagination;
+
     public string $filter = '';
     public string $productSearch = '';
 

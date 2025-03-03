@@ -7,7 +7,7 @@ class OrderService
 {
     private string $FILTER = 'mis-pedidos';
 
-    public function getOrders(string $filter = null) {
+    public function getOrders(?string $filter) {
 
         //get only user filter
         if($filter === $this->FILTER) {

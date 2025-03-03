@@ -60,3 +60,19 @@
     height: 200px;
     border-radius: 5px;
 }
+
+/*pagination*/
+.pagination-link nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.pagination-link nav div {
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.pagination-link svg {
+    display: none;
+}
